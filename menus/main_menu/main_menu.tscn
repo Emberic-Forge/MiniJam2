@@ -1,0 +1,41 @@
+[gd_scene load_steps=3 format=3 uid="uid://cf4jkpdyxvahs"]
+
+[ext_resource type="Script" uid="uid://d2nxs7eaf2tcq" path="res://menus/main_menu/scripts/main_menu.gd" id="1_xbn2l"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1nwmw"]
+font_size = 32
+
+[node name="main_menu" type="CanvasLayer"]
+script = ExtResource("1_xbn2l")
+game_scene = "uid://i4rf6ylkd03b"
+
+[node name="elements" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -111.0
+offset_top = -26.0
+offset_right = 113.0
+offset_bottom = 188.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="title" type="Label" parent="elements"]
+layout_mode = 2
+text = "Reverse Snake"
+label_settings = SubResource("LabelSettings_1nwmw")
+horizontal_alignment = 1
+
+[node name="spacing" type="Control" parent="elements"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="play" type="Button" parent="elements"]
+layout_mode = 2
+text = "Play"
+
+[node name="options" type="Button" parent="elements"]
+layout_mode = 2
+text = "Options"

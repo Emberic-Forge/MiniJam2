@@ -1,5 +1,7 @@
 class_name GameOverMenu extends CanvasLayer
 
+@export_file var main_menu_scene : String
+
 @onready var title : Label= $layout/title
 @onready var score : Label = $layout/score
 
@@ -7,6 +9,8 @@ class_name GameOverMenu extends CanvasLayer
 @onready var main_menu : Button = $layout/buttons/main_menu
 
 var world_scroller : WorldScroller2D
+var progress = []
+var scene_load_status = 0
 
 func _ready() -> void:
 	retry.button_down.connect(_restart_game)
@@ -31,8 +35,18 @@ func disable() -> void:
 	main_menu.modulate = Color(0,0,0,0)
 	process_mode = Node.PROCESS_MODE_DISABLED
 
+func update_score(new_score : int) -> void:
+	score.text = "Score: %s" % str(new_score)
+
 func _restart_game() -> void:
 	world_scroller.new_game()
 
 func _load_main_menu() -> void:
+	ResourceLoader.load_threaded_request(main_menu_scene, "", true)
 	pass
+
+func _process(delta : float) -> void:
+	scene_load_status = ResourceLoader.load_threaded_get_status(main_menu_scene, progress)
+	if scene_load_status == ResourceLoader.THREAD_LOAD_LOADED:
+		var scene = ResourceLoader.load_threaded_get(main_menu_scene)
+		get_tree().change_scene_to_packed(scene)

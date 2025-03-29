@@ -14,6 +14,7 @@ var speed : float
 var spawn_tile_pos : Vector2
 var target_level_tile : LevelTile2D
 var run_state : bool = true
+var current_score : int = 0
 
 class InstantiatedTile:
 	var tile_node : Node2D
@@ -37,10 +38,12 @@ func new_game() -> void:
 	_spawn_tile()
 	run_state = true
 	game_over.disable()
+	current_score = 0
 
 func _on_game_over(killer : Node2D) -> void:
 	camera.node_to_track = killer
 	run_state = false
+	game_over.update_score(current_score)
 	game_over.enable()
 
 func _select_random_starting_tile() -> LevelTile2D:
@@ -71,7 +74,7 @@ func _spawn_tile() -> void:
 func _process(delta : float) -> void:
 	if !run_state:
 		return
-
+	current_score += 1
 	var offset = speed * delta
 	# move player and camera
 	player.position.x += offset

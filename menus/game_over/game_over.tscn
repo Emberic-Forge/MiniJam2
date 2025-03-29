@@ -9,6 +9,7 @@ font_size = 32
 
 [node name="game_over" type="CanvasLayer"]
 script = ExtResource("1_e7rg5")
+main_menu_scene = "uid://cf4jkpdyxvahs"
 
 [node name="layout" type="VBoxContainer" parent="."]
 anchors_preset = 7
