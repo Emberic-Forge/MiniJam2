@@ -1,20 +1,42 @@
-[gd_scene load_steps=4 format=4 uid="uid://i4rf6ylkd03b"]
+[gd_scene load_steps=8 format=4 uid="uid://i4rf6ylkd03b"]
 
 [ext_resource type="Script" uid="uid://dv5trmhfslb6c" path="res://world_scroller/scripts/world_scroller.gd" id="1_1tk1a"]
 [ext_resource type="PackedScene" uid="uid://nt7cjwx734u7" path="res://player/player.tscn" id="1_m52ym"]
+[ext_resource type="Script" uid="uid://b1364uqi78o8p" path="res://world_scroller/scripts/level_tile.gd" id="2_tdtpt"]
+[ext_resource type="Resource" uid="uid://bw5q3my25abjx" path="res://world_scroller/level_tiles/tile_a.tres" id="3_6ehpo"]
+[ext_resource type="Texture2D" uid="uid://mhs8e80jcld5" path="res://addons/kenney_prototype_tools/textures/orange/texture_09.png" id="3_7rhlc"]
 [ext_resource type="TileSet" uid="uid://c66ftdo0f0oqc" path="res://world_scroller/tile_sets/background.tres" id="4_7rhlc"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_m52ym"]
 
 [node name="world_scroller" type="Node2D"]
 script = ExtResource("1_1tk1a")
 start_speed = 150.0
 max_speed = 300.0
-starting_tile = Array[String](["uid://bw5q3my25abjx"])
+starting_tile = Array[ExtResource("2_tdtpt")]([ExtResource("3_6ehpo")])
 
 [node name="player" parent="." instance=ExtResource("1_m52ym")]
 position = Vector2(0, -16)
 
-[node name="avatar" parent="player" index="0"]
+[node name="background" parent="player/camera" index="0"]
+z_as_relative = true
+
+[node name="avatar" parent="player" index="1"]
 z_index = 1
+
+[node name="temp_floor" type="StaticBody2D" parent="."]
+position = Vector2(0, 2)
+
+[node name="shape" type="CollisionShape2D" parent="temp_floor"]
+position = Vector2(0, 1)
+shape = SubResource("WorldBoundaryShape2D_m52ym")
+
+[node name="temp_sprite" type="Sprite2D" parent="temp_floor"]
+visible = false
+position = Vector2(503, 250)
+texture = ExtResource("3_7rhlc")
+region_enabled = true
+region_rect = Rect2(0, 0, 1157, 500)
 
 [node name="background" type="ParallaxBackground" parent="."]
 layer = 0

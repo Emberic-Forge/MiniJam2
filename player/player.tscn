@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://nt7cjwx734u7"]
+[gd_scene load_steps=6 format=3 uid="uid://nt7cjwx734u7"]
 
 [ext_resource type="Script" uid="uid://yssppt0n4aql" path="res://player/scripts/player_controller.gd" id="1_oul6g"]
 
@@ -6,12 +6,15 @@
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_oul6g"]
 
-[node name="player" type="Node2D"]
+[sub_resource type="Gradient" id="Gradient_oul6g"]
 
-[node name="camera" type="Camera2D" parent="."]
-position = Vector2(116, 0)
-zoom = Vector2(3, 3)
-process_callback = 0
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rkbax"]
+gradient = SubResource("Gradient_oul6g")
+width = 1536
+height = 868
+fill_from = Vector2(1, 0)
+
+[node name="player" type="Node2D"]
 
 [node name="avatar" type="CharacterBody2D" parent="."]
 script = ExtResource("1_oul6g")
@@ -24,3 +27,14 @@ shape = SubResource("CapsuleShape2D_rkbax")
 [node name="temp_sprite" type="Sprite2D" parent="avatar"]
 scale = Vector2(14, 24)
 texture = SubResource("PlaceholderTexture2D_oul6g")
+
+[node name="camera" type="Camera2D" parent="avatar"]
+zoom = Vector2(3, 3)
+process_callback = 0
+limit_top = -145
+limit_bottom = 145
+
+[node name="background" type="Sprite2D" parent="avatar/camera"]
+z_index = -1
+z_as_relative = false
+texture = SubResource("GradientTexture2D_rkbax")
