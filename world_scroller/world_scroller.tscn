@@ -1,13 +1,14 @@
-[gd_scene load_steps=4 format=4 uid="uid://i4rf6ylkd03b"]
+[gd_scene load_steps=5 format=4 uid="uid://i4rf6ylkd03b"]
 
 [ext_resource type="Script" uid="uid://dv5trmhfslb6c" path="res://world_scroller/scripts/world_scroller.gd" id="1_1tk1a"]
 [ext_resource type="PackedScene" uid="uid://nt7cjwx734u7" path="res://player/player.tscn" id="1_m52ym"]
+[ext_resource type="PackedScene" uid="uid://biaipq8uj6pxs" path="res://menus/game_over/game_over.tscn" id="4_5jsjt"]
 [ext_resource type="TileSet" uid="uid://c66ftdo0f0oqc" path="res://world_scroller/tile_sets/background.tres" id="4_7rhlc"]
 
 [node name="world_scroller" type="Node2D"]
 script = ExtResource("1_1tk1a")
-start_speed = 150.0
-max_speed = 300.0
+start_speed = 300.0
+max_speed = 350.0
 starting_tile = Array[String](["uid://bw5q3my25abjx"])
 
 [node name="player" parent="." instance=ExtResource("1_m52ym")]
@@ -35,5 +36,7 @@ motion_mirroring = Vector2(384, 0)
 
 [node name="layer_4" type="ParallaxLayer" parent="background"]
 motion_mirroring = Vector2(384, 0)
+
+[node name="game_over" parent="." instance=ExtResource("4_5jsjt")]
 
 [editable path="player"]
