@@ -1,14 +1,17 @@
-[gd_scene load_steps=5 format=4 uid="uid://i4rf6ylkd03b"]
+[gd_scene load_steps=6 format=3 uid="uid://i4rf6ylkd03b"]
 
 [ext_resource type="Script" uid="uid://dv5trmhfslb6c" path="res://world_scroller/scripts/world_scroller.gd" id="1_1tk1a"]
 [ext_resource type="PackedScene" uid="uid://nt7cjwx734u7" path="res://player/player.tscn" id="1_m52ym"]
+[ext_resource type="TileSet" uid="uid://mmnlffcfbue1" path="res://world_scroller/tile_sets/core_tile_set.tres" id="3_5jsjt"]
 [ext_resource type="PackedScene" uid="uid://biaipq8uj6pxs" path="res://menus/game_over/game_over.tscn" id="4_5jsjt"]
-[ext_resource type="TileSet" uid="uid://c66ftdo0f0oqc" path="res://world_scroller/tile_sets/background.tres" id="4_7rhlc"]
+[ext_resource type="PackedScene" uid="uid://dctgvjf1feefm" path="res://obstacles/snakes/main_snake.tscn" id="5_tdtpt"]
 
 [node name="world_scroller" type="Node2D"]
 script = ExtResource("1_1tk1a")
 start_speed = 300.0
-max_speed = 350.0
+max_speed = 400.0
+speed_increment = 10.0
+speed_reduction_on_damage_taken = 50.0
 starting_tile = Array[String](["uid://bw5q3my25abjx"])
 
 [node name="player" parent="." instance=ExtResource("1_m52ym")]
@@ -25,8 +28,7 @@ motion_mirroring = Vector2(696, 0)
 
 [node name="background_layer" type="TileMapLayer" parent="background/layer_1"]
 texture_filter = 1
-tile_map_data = PackedByteArray("AAD7/wEAAAASABEAAAD8/wEAAAASABEAAAD9/wEAAAASABEAAAD+/wEAAAASABEAAAD//wEAAAASABEAAAAAAAEAAAASABEAAAABAAEAAAASABEAAAACAAEAAAASABEAAAADAAEAAAASABEAAAAEAAEAAAASABEAAAAFAAEAAAASABEAAAAGAAEAAAASABEAAAAHAAEAAAASABEAAAAIAAEAAAASABEAAAAJAAEAAAASABEAAAAKAAEAAAASABEAAAALAAEAAAASABEAAAAMAAEAAAASABEAAAANAAEAAAASABEAAAAOAAEAAAASABEAAAAPAAEAAAASABEAAAAQAAEAAAASABEAAAARAAEAAAASABEAAAASAAEAAAASABEAAAATAAEAAAASABEAAAAUAAEAAAASABEAAAAVAAEAAAASABEAAAAWAAEAAAASABEAAAAXAAEAAAASABEAAAAYAAEAAAASABEAAAAZAAEAAAASABEAAAAaAAEAAAASABEAAAAbAAEAAAASABEAAAAcAAEAAAASABEAAAAdAAEAAAASABEAAAAeAAEAAAASABEAAAAfAAEAAAASABEAAAAgAAEAAAASABEAAAAhAAEAAAASABEAAAAiAAEAAAASABEAAAAjAAEAAAASABEAAAAkAAEAAAASABEAAAAlAAEAAAASABEAAAAmAAEAAAASABEAAAD9/wQAAAALAA4AAAAHAAIAAAALAA4AAAARAAUAAAALAA4AAAAAAAIAAAALAA4AAAAUAAIAAAALAA4AAAAaAAUAAAALAA4AAAAfAAIAAAALAA4AAAAlAAUAAAALAA4AAAAlAAIAAAALAA4AAAAhAAUAAAALAA4AAAAYAAMAAAALAA4AAAAVAAUAAAALAA4AAAAOAAMAAAALAA4AAAAIAAUAAAALAA4AAAADAAQAAAALAA4AAAD7/wIAAAALAA4AAAD6/wUAAAALAA4AAAD7//v/AAALAAkAAAD8//v/AAALAAkAAAD9//v/AAALAAkAAAD+//v/AAALAAkAAAD///v/AAALAAkAAAAAAPv/AAALAAkAAAABAPv/AAALAAkAAAACAPv/AAALAAkAAAADAPv/AAALAAkAAAAEAPv/AAALAAkAAAAFAPv/AAALAAkAAAAGAPv/AAAMAAkAAAAGAPz/AAAMAAoAAAAGAP3/AAAMAAoAAAAGAP7/AAAMAAoAAAAGAP//AAAMAAoAAAAGAAAAAAAMAAoAAAAQAP//AAALAAkAAAARAP//AAALAAkAAAASAP//AAALAAkAAAATAP//AAALAAkAAAAUAP//AAALAAkAAAAVAP//AAALAAkAAAAWAP//AAALAAkAAAAXAP//AAALAAkAAAAYAP//AAALAAkAAAAZAP//AAALAAkAAAAaAP//AAALAAkAAAAbAP//AAAMAAkAAAAPAP//AAAKAAkAAAAPAAAAAAAKAAoAAAAbAAAAAAAMAAoAAAASAPr/AAAFAAYAAAATAPr/AAAFAAYAAAAUAPr/AAAFAAYAAAAVAPr/AAAFAAYAAAAWAPr/AAAFAAYAAAAXAPr/AAAFAAYAAAAYAPr/AAAFAAYAAAAZAPr/AAAFAAYAAAAaAPr/AAAFAAYAAAARAPr/AAAEAAYAAAAbAPr/AAAGAAYAAAAkAAAAAAAKAAoAAAAkAP//AAAKAAoAAAAkAP7/AAAKAAoAAAAlAP3/AAALAAkAAAAkAP3/AAAKAAkAAAAmAPz/AAAKAAoAAAAmAPv/AAAKAAkAAAAmAP3/AAALAAkAAAAnAP3/AAALAAkAAAA=")
-tile_set = ExtResource("4_7rhlc")
+tile_set = ExtResource("3_5jsjt")
 
 [node name="layer_2" type="ParallaxLayer" parent="background"]
 motion_mirroring = Vector2(384, 0)
@@ -39,4 +41,9 @@ motion_mirroring = Vector2(384, 0)
 
 [node name="game_over" parent="." instance=ExtResource("4_5jsjt")]
 
+[node name="main_snake" parent="." instance=ExtResource("5_tdtpt")]
+position = Vector2(-193, 0)
+snake_segment = "uid://sjq334pkao2d"
+
 [editable path="player"]
+[editable path="main_snake"]

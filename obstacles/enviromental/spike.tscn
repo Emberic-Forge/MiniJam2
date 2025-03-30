@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://5pqmb1j8t0kb" path="res://obstacles/enviromental/scripts/spike.gd" id="1_ihk16"]
 
 [node name="spike" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
 script = ExtResource("1_ihk16")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

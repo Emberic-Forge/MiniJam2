@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://sjq334pkao2d"]
+
+[ext_resource type="Texture2D" uid="uid://dlsgl28k3w7dy" path="res://obstacles/snakes/textures/snake_seg.svg" id="1_ddpu3"]
+[ext_resource type="PackedScene" uid="uid://d2tb6g47h1iah" path="res://obstacles/enviromental/killbox.tscn" id="2_4slmr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t7k8b"]
+size = Vector2(55, 55)
+
+[node name="snake_segment" type="Node2D"]
+
+[node name="sprite" type="Sprite2D" parent="."]
+modulate = Color(0.634952, 0.627104, 0.633096, 1)
+scale = Vector2(13, 13)
+texture = ExtResource("1_ddpu3")
+
+[node name="killbox" parent="." instance=ExtResource("2_4slmr")]
+
+[node name="shape" type="CollisionShape2D" parent="killbox"]
+shape = SubResource("RectangleShape2D_t7k8b")

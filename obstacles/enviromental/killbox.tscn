@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2tb6g47h1iah"]
+
+[ext_resource type="Script" uid="uid://k8nynp8kllw0" path="res://obstacles/enviromental/scripts/killbox.gd" id="1_6cer0"]
+
+[node name="killbox" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_6cer0")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

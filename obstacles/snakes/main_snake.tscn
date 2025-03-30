@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dctgvjf1feefm"]
+
+[ext_resource type="Script" uid="uid://b2hwtxgqa4kxs" path="res://obstacles/snakes/scripts/main_snake.gd" id="1_fxx5r"]
+
+[node name="main_snake" type="Node2D"]
+script = ExtResource("1_fxx5r")
+
+[node name="segment_updater" type="Timer" parent="."]
+wait_time = 0.125

@@ -12,6 +12,8 @@ class_name Player extends CharacterBody2D
 @onready var sprite : AnimatedSprite2D = $sprite
 
 signal on_player_death
+signal on_player_damage_taken
+
 var dead_flag : bool = false
 
 func _process(delta : float) -> void:
@@ -44,14 +46,10 @@ func _handle_jump() -> void:
 func _calculate_jump_velocity(target_height : float) -> float:
 	return sqrt(2*default_gravity_amm * target_height)
 
-func alter_health(value : float, affector : Node2D) -> void:
-	if health <= 0:
+func hit_player() -> void:
+	if is_dead():
 		return
-
-	health += value
-	print("Health Altered for Player - %f" % health)
-	if health <= 0:
-		kill(affector)
+	on_player_damage_taken.emit()
 
 
 func respawn(new_pos : Vector2) -> void:
@@ -61,10 +59,15 @@ func respawn(new_pos : Vector2) -> void:
 	dead_flag = false
 
 func kill(killer : Node2D) -> void:
+	if is_dead():
+		return
 	dead_flag = true
 	on_player_death.emit(killer)
 	health = 0
 	velocity = Vector2.ZERO
 	print("Player died!")
+
+func is_dead() -> bool:
+	return dead_flag
 
 	# Play player death anim here

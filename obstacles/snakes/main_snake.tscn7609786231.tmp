@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://dctgvjf1feefm"]
+
+[ext_resource type="PackedScene" uid="uid://d2tb6g47h1iah" path="res://obstacles/enviromental/killbox.tscn" id="1_fxx5r"]
+
+[sub_resource type="GDScript" id="GDScript_k07ua"]
+script/source = "extends Node2D
+
+@export_file var snake_segment : String
+@export var segment_size : Vector2 = Vector2(55,55)
+@export var segment_amount : int = 5
+
+@onready var packed_snake_segment : PackedScene = load(snake_segment)
+@onready var segment_updater : Timer = $segment_updater
+
+var target_point : Vector2
+
+var old_segment_pos : Array[Vector2]
+var segment : Array[Control]
+
+func update_target_point(new_point : Vector2) -> void:
+	target_point = new_point
+
+func _ready() -> void:
+	for i in range(segment_amount):
+		var new_pos = position + (Vector2.LEFT * segment_size.x * i)
+		var ins = packed_snake_segment.instantiate()
+		ins.position = new_pos
+		get_tree().root.add_child(ins)
+		segment.push_back(ins)
+		old_segment_pos.push_back(new_pos)
+
+	segment_updater.start()
+	segment_updater.timeout.connect(_update_segments)
+
+
+func _update_segments() -> void:
+	var seg_pos = target_point / segment_size
+	var target_pos = seg_pos * segment_size
+	
+	for h in range(len(old_segment_pos) - 1):
+		segment[h].position = old_segment_pos[h - 1]
+		old_segment_pos[h] = old_segment_pos[h-1]
+	
+	var head = segment[0]
+	head.position = target_pos
+	old_segment_pos[0] = target_pos
+
+
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tcfhs"]
+size = Vector2(121, 324)
+
+[node name="main_snake" type="Node2D"]
+script = SubResource("GDScript_k07ua")
+
+[node name="killbox" parent="." instance=ExtResource("1_fxx5r")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="killbox"]
+position = Vector2(-36.5, 0)
+shape = SubResource("RectangleShape2D_tcfhs")
+
+[node name="segment_updater" type="Timer" parent="."]
+wait_time = 0.25

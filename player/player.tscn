@@ -18,6 +18,7 @@ fill_from = Vector2(1, 0)
 [node name="player" type="Node2D"]
 
 [node name="avatar" type="CharacterBody2D" parent="."]
+collision_layer = 2
 floor_constant_speed = true
 script = ExtResource("1_oul6g")
 jump_height = 50.0
