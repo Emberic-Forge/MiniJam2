@@ -1,10 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://bl8gw7vdqmn6c"]
+[gd_scene load_steps=4 format=3 uid="uid://bl8gw7vdqmn6c"]
 
-[ext_resource type="Script" uid="uid://5pqmb1j8t0kb" path="res://obstacles/enviromental/scripts/spike.gd" id="1_ihk16"]
+[ext_resource type="Script" uid="uid://k8nynp8kllw0" path="res://obstacles/enviromental/scripts/killbox.gd" id="1_68kjl"]
+[ext_resource type="Texture2D" uid="uid://cqsttu6aso32e" path="res://world_scroller/textures/kenney/PNG/Other/spikesHigh.png" id="2_68kjl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_68kjl"]
 
 [node name="spike" type="Area2D"]
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("1_ihk16")
+script = ExtResource("1_68kjl")
+
+[node name="sprite" type="Sprite2D" parent="."]
+position = Vector2(0, 3)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_68kjl")
+
+[node name="area" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_68kjl")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

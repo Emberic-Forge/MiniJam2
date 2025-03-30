@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=4 uid="uid://c5mox1a6gaplf"]
+
+[ext_resource type="TileSet" uid="uid://mmnlffcfbue1" path="res://world_scroller/tile_sets/core_tile_set.tres" id="1_vpuh3"]
+[ext_resource type="PackedScene" uid="uid://bl8gw7vdqmn6c" path="res://obstacles/enviromental/spike.tscn" id="2_nmbga"]
+[ext_resource type="Texture2D" uid="uid://cqsttu6aso32e" path="res://world_scroller/textures/kenney/PNG/Other/spikesHigh.png" id="3_fng7r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nmbga"]
+size = Vector2(80, 30)
+
+[node name="tile_h" type="TileMapLayer"]
+texture_filter = 1
+tile_map_data = PackedByteArray("AAD2//b/AAACAAAAAAD2/wgAAAACAAAAAAD3//b/AAACAAAAAAD3/wgAAAACAAAAAAD4//b/AAACAAAAAAD4/wgAAAACAAAAAAD5//b/AAACAAAAAAD5/wgAAAACAAAAAAD6//b/AAACAAAAAAD6/wgAAAACAAAAAAD7//b/AAACAAAAAAD7/wgAAAACAAAAAAD8//b/AAACAAAAAAD8/wgAAAACAAAAAAD9//b/AAACAAAAAAD+//b/AAACAAAAAAD///b/AAACAAAAAAAAAPb/AAACAAAAAAABAPb/AAACAAAAAAACAPb/AAACAAAAAAADAPb/AAACAAAAAAADAAgAAAABAAAAAAAEAPb/AAACAAAAAAAEAAgAAAACAAAAAAAFAPb/AAACAAAAAAAFAAgAAAACAAAAAAAGAPb/AAACAAAAAAAHAPb/AAACAAAAAAAIAPb/AAACAAAAAAAGAAgAAAACAAAAAAAHAAgAAAACAAAAAAAIAAgAAAACAAAAAAD9/wgAAAADAAAAAAA=")
+tile_set = ExtResource("1_vpuh3")
+
+[node name="spike" parent="." instance=ExtResource("2_nmbga")]
+position = Vector2(-22, 137)
+
+[node name="sprite" parent="spike" index="0"]
+z_index = -1
+
+[node name="area" parent="spike" index="1"]
+position = Vector2(30, 13)
+shape = SubResource("RectangleShape2D_nmbga")
+
+[node name="sprite2" type="Sprite2D" parent="spike"]
+z_index = -1
+position = Vector2(19, 3)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_fng7r")
+
+[node name="sprite3" type="Sprite2D" parent="spike"]
+z_index = -1
+position = Vector2(38, 3)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_fng7r")
+
+[node name="sprite4" type="Sprite2D" parent="spike"]
+z_index = -1
+position = Vector2(57, 3)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_fng7r")
+
+[node name="sprite5" type="Sprite2D" parent="spike"]
+z_index = -1
+position = Vector2(76, 3)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_fng7r")
+
+[editable path="spike"]

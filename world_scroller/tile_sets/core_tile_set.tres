@@ -1,7 +1,8 @@
-[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://mmnlffcfbue1"]
+[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://mmnlffcfbue1"]
 
 [ext_resource type="Texture2D" uid="uid://ck25ag00gqhap" path="res://world_scroller/textures/kenney/Tilesheet/tilesheet_complete_greyscaled.png" id="1_w1oxd"]
 [ext_resource type="Texture2D" uid="uid://bkc0inrtd1lhf" path="res://world_scroller/textures/kenney/Tilesheet/tilesheet_complete.png" id="2_qjhrr"]
+[ext_resource type="PackedScene" uid="uid://bl8gw7vdqmn6c" path="res://obstacles/enviromental/spike.tscn" id="3_xifjo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qjhrr"]
 texture = ExtResource("1_w1oxd")
@@ -742,6 +743,10 @@ texture_region_size = Vector2i(64, 64)
 20:11/0 = 0
 21:11/0 = 0
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_lu5vq"]
+scenes/1/scene = ExtResource("3_xifjo")
+scenes/1/display_placeholder = ExtResource("3_xifjo")
+
 [resource]
 physics_layer_0/collision_layer = 1
 terrain_set_0/mode = 0
@@ -751,3 +756,4 @@ terrain_set_0/terrain_1/name = "Alt Ground"
 terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_qjhrr")
 sources/1 = SubResource("TileSetAtlasSource_xifjo")
+sources/5 = SubResource("TileSetScenesCollectionSource_lu5vq")

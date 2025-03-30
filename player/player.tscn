@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://nt7cjwx734u7"]
+[gd_scene load_steps=5 format=3 uid="uid://nt7cjwx734u7"]
 
 [ext_resource type="Script" uid="uid://yssppt0n4aql" path="res://player/scripts/player_controller.gd" id="1_oul6g"]
 [ext_resource type="SpriteFrames" uid="uid://btr8w48gewnk" path="res://player/animations/player_frames.tres" id="2_g1dw6"]
@@ -7,21 +7,13 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_rkbax"]
 radius = 12.0
 
-[sub_resource type="Gradient" id="Gradient_oul6g"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_rkbax"]
-gradient = SubResource("Gradient_oul6g")
-width = 1536
-height = 868
-fill_from = Vector2(1, 0)
-
 [node name="player" type="Node2D"]
 
 [node name="avatar" type="CharacterBody2D" parent="."]
 collision_layer = 2
 floor_constant_speed = true
 script = ExtResource("1_oul6g")
-jump_height = 50.0
+jump_height = 25.0
 
 [node name="sprite" type="AnimatedSprite2D" parent="avatar"]
 position = Vector2(1, -4)
@@ -40,7 +32,15 @@ limit_top = -145
 limit_bottom = 145
 script = ExtResource("2_rkbax")
 
-[node name="background" type="Sprite2D" parent="camera"]
-z_index = -1
-z_as_relative = false
-texture = SubResource("GradientTexture2D_rkbax")
+[node name="CanvasLayer" type="CanvasLayer" parent="camera"]
+layer = -1
+follow_viewport_enabled = true
+
+[node name="ColorRect" type="ColorRect" parent="camera/CanvasLayer"]
+z_index = -100
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)

@@ -11,6 +11,7 @@ class_name GameOverMenu extends CanvasLayer
 var world_scroller : WorldScroller2D
 var progress = []
 var scene_load_status = 0
+var tween : Tween
 
 func _ready() -> void:
 	retry.button_down.connect(_restart_game)
@@ -22,13 +23,15 @@ func init(scroller : WorldScroller2D) -> void:
 
 func enable() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	var tween = get_tree().create_tween()
+	tween = get_tree().create_tween()
 	tween.tween_property(title.label_settings,"font_color", Color.WHITE,1)
 	tween.tween_property(score.label_settings, "font_color", Color.WHITE,1)
 	tween.parallel().tween_property(retry, "modulate", Color.WHITE, 1)
 	tween.parallel().tween_property(main_menu, "modulate", Color.WHITE, 1)
 
 func disable() -> void:
+	if tween:
+		tween.kill()
 	title.label_settings.font_color = Color(0,0,0,0)
 	score.label_settings.font_color = Color(0,0,0,0)
 	retry.modulate = Color(0,0,0,0)

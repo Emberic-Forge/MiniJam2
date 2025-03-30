@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://co4t44tpewt8q"]
+
+[ext_resource type="AudioStream" uid="uid://dfdvpj5t8nwo7" path="res://music/assets/Basic Loop(2).wav" id="2_3okg2"]
+[ext_resource type="Script" uid="uid://ca5oky1gcca83" path="res://music/scripts/background_music.gd" id="2_d57fl"]
+[ext_resource type="AudioStream" uid="uid://b4ivsd6p4qosj" path="res://music/assets/Low Pass Loop.wav" id="3_tsffy"]
+[ext_resource type="AudioStream" uid="uid://c0e6etbsq8eqf" path="res://music/assets/Dnb Loop.wav" id="4_3okg2"]
+
+[sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_yiglt"]
+cutoff_hz = 600.0
+
+[node name="background_music" type="Node2D"]
+script = ExtResource("2_d57fl")
+low_pass_filter = SubResource("AudioEffectLowPassFilter_yiglt")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_tsffy")
+volume_db = -80.0
+autoplay = true
+bus = &"Music"
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_3okg2")
+volume_db = -80.0
+autoplay = true
+bus = &"Music"
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_3okg2")
+volume_db = -80.0
+autoplay = true
+bus = &"Music"
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_tsffy")
+volume_db = -80.0
+autoplay = true
+bus = &"Music"

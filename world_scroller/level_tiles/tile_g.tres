@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="LevelTile2D" load_steps=3 format=3 uid="uid://bdlk7dw0lpnwl"]
+
+[ext_resource type="Script" uid="uid://b1364uqi78o8p" path="res://world_scroller/scripts/level_tile.gd" id="1_5h1nr"]
+[ext_resource type="PackedScene" uid="uid://cwv0s6ni4tl4i" path="res://world_scroller/level_tiles/scenes/tile_g.tscn" id="2_ct64d"]
+
+[resource]
+script = ExtResource("1_5h1nr")
+acceptable_neighbours = Array[String](["uid://bw5q3my25abjx", "uid://byn5ohy62l12w", "uid://biejplyxrwamw", "uid://b5pas3837b4q"])
+tile_scene = ExtResource("2_ct64d")
+tile_size = Vector2(300, 300)
+metadata/_custom_type_script = "uid://b1364uqi78o8p"

@@ -1,0 +1,77 @@
+[gd_scene load_steps=5 format=4 uid="uid://b7tq1a7n2itot"]
+
+[ext_resource type="TileSet" uid="uid://mmnlffcfbue1" path="res://world_scroller/tile_sets/core_tile_set.tres" id="1_tvrtx"]
+[ext_resource type="PackedScene" uid="uid://bl8gw7vdqmn6c" path="res://obstacles/enviromental/spike.tscn" id="2_7pfhl"]
+[ext_resource type="Texture2D" uid="uid://cqsttu6aso32e" path="res://world_scroller/textures/kenney/PNG/Other/spikesHigh.png" id="3_8iggg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7pfhl"]
+size = Vector2(227, 28.5)
+
+[node name="tile_c" type="TileMapLayer"]
+texture_filter = 1
+tile_map_data = PackedByteArray("AAD2/wgAAAAAAAAAAAD3/wgAAAAAAAAAAAD4/wgAAAAAAAAAAAD5/wgAAAAAAAAAAAD6/wgAAAAAAAAAAAAAAPb/AAACAAAAAAABAPb/AAACAAAAAAACAPb/AAAFAAIAAAADAPb/AAAFAAIAAAAEAPb/AAAGAAIAAAAFAPb/AAAFAAIAAAAGAPb/AAAFAAIAAAAHAPb/AAAGAAIAAAAIAPb/AAACAAMAAAD///b/AAACAAAAAAD+//b/AAACAAAAAAD9//b/AAAGAAIAAAD8//b/AAAGAAIAAAD7//b/AAAGAAIAAAD6//b/AAACAAAAAAD5//b/AAACAAAAAAD4//b/AAAGAAIAAAD3//b/AAAGAAIAAAD2//b/AAACAAMAAAD2/wQAAAACAAAAAAD3/wQAAAACAAAAAAD4/wQAAAACAAAAAAD5/wQAAAACAAAAAAD6/wQAAAADAAAAAAD2/wUAAAAAAAAAAAD2/wYAAAAAAAAAAAD2/wcAAAAAAAAAAAD6/wcAAAAAAAAAAAD6/wYAAAAAAAAAAAD6/wUAAAAAAAAAAAD5/wUAAAAAAAAAAAD4/wUAAAAAAAAAAAD3/wUAAAAAAAAAAAD3/wYAAAAAAAAAAAD4/wcAAAAAAAAAAAD5/wcAAAAAAAAAAAD5/wYAAAAAAAAAAAD4/wYAAAAAAAAAAAD3/wcAAAAAAAAAAAD9/wIAAAAFAAAAAAD+/wIAAAAGAAAAAAD//wIAAAAGAAAAAAAAAAIAAAAGAAAAAAABAAEAAAABAAEAAAACAAAAAAABAAEAAAACAAEAAAABAAIAAAADAAAAAAACAAAAAAAEAAAAAAACAAAAAAAFAAAAAAACAAAAAAAGAAAAAAACAAAAAAAHAAAAAAACAAAAAAAIAAAAAAACAAAAAAAHAAIAAAAGAAAAAAAIAAIAAAAGAAAAAAAIAAEAAAAAAAAAAAAHAAEAAAAAAAAAAAAGAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAADAAEAAAAAAAAAAAABAAIAAAAGAAAAAAACAAIAAAAGAAAAAAADAAIAAAAGAAAAAAAEAAIAAAAGAAAAAAAFAAIAAAAGAAAAAAAGAAIAAAAGAAAAAAA=")
+tile_set = ExtResource("1_tvrtx")
+
+[node name="spike" parent="." instance=ExtResource("2_7pfhl")]
+position = Vector2(-70, 136)
+
+[node name="sprite2" type="Sprite2D" parent="spike"]
+position = Vector2(19, 3)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_8iggg")
+
+[node name="sprite3" type="Sprite2D" parent="spike"]
+position = Vector2(37.6, 3)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_8iggg")
+
+[node name="sprite4" type="Sprite2D" parent="spike"]
+position = Vector2(56.6, 3)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_8iggg")
+
+[node name="sprite5" type="Sprite2D" parent="spike"]
+position = Vector2(75.6, 3)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_8iggg")
+
+[node name="sprite6" type="Sprite2D" parent="spike"]
+position = Vector2(94.6, 3)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_8iggg")
+
+[node name="sprite7" type="Sprite2D" parent="spike"]
+position = Vector2(113.2, 3)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_8iggg")
+
+[node name="sprite8" type="Sprite2D" parent="spike"]
+position = Vector2(132.2, 3)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_8iggg")
+
+[node name="sprite9" type="Sprite2D" parent="spike"]
+position = Vector2(151.6, 3)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_8iggg")
+
+[node name="sprite10" type="Sprite2D" parent="spike"]
+position = Vector2(170.6, 3)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_8iggg")
+
+[node name="sprite11" type="Sprite2D" parent="spike"]
+position = Vector2(189.2, 3)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_8iggg")
+
+[node name="sprite12" type="Sprite2D" parent="spike"]
+position = Vector2(208.2, 3)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_8iggg")
+
+[node name="area" parent="spike" index="12"]
+position = Vector2(103.5, 12.25)
+shape = SubResource("RectangleShape2D_7pfhl")
+
+[editable path="spike"]
