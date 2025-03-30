@@ -1,13 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://nt7cjwx734u7"]
 
 [ext_resource type="Script" uid="uid://yssppt0n4aql" path="res://player/scripts/player_controller.gd" id="1_oul6g"]
+[ext_resource type="SpriteFrames" uid="uid://btr8w48gewnk" path="res://player/animations/player_frames.tres" id="2_g1dw6"]
 [ext_resource type="Script" uid="uid://bpilo4qmimq75" path="res://player/scripts/camera_tracker.gd" id="2_rkbax"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rkbax"]
 radius = 12.0
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_oul6g"]
-size = Vector2(24, 24)
 
 [sub_resource type="Gradient" id="Gradient_oul6g"]
 
@@ -20,15 +18,19 @@ fill_from = Vector2(1, 0)
 [node name="player" type="Node2D"]
 
 [node name="avatar" type="CharacterBody2D" parent="."]
+floor_constant_speed = true
 script = ExtResource("1_oul6g")
-movement_speed = 300.0
 jump_height = 50.0
+
+[node name="sprite" type="AnimatedSprite2D" parent="avatar"]
+position = Vector2(1, -4)
+scale = Vector2(0.15, 0.15)
+sprite_frames = ExtResource("2_g1dw6")
+animation = &"run"
+autoplay = "run"
 
 [node name="body" type="CollisionShape2D" parent="avatar"]
 shape = SubResource("CircleShape2D_rkbax")
-
-[node name="temp_sprite" type="Sprite2D" parent="avatar"]
-texture = SubResource("PlaceholderTexture2D_oul6g")
 
 [node name="camera" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)

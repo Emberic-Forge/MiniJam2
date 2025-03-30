@@ -75,9 +75,8 @@ func _process(delta : float) -> void:
 	if !run_state:
 		return
 	current_score += 1
-	var offset = speed * delta
 	# move player and camera
-	player.position.x += offset
+	player.velocity.x = speed
 
 	# calculate the distance between the newest tile and the player
 	var newest_tile := existing_tiles[len(existing_tiles) - 1]

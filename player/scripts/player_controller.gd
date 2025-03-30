@@ -1,7 +1,6 @@
 class_name Player extends CharacterBody2D
 
 @export_group("Movement")
-@export var movement_speed : float = 3.0
 @export var jump_height : float = 1.5
 @export_subgroup("Air")
 @export var fall_multiplier : float = 1.3
@@ -10,9 +9,18 @@ class_name Player extends CharacterBody2D
 
 @onready var default_gravity_amm : float = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var health := max_health
+@onready var sprite : AnimatedSprite2D = $sprite
 
 signal on_player_death
 var dead_flag : bool = false
+
+func _process(delta : float) -> void:
+	var collision = move_and_collide(Vector2.RIGHT,true)
+	if collision:
+		var normal := collision.get_normal()
+		sprite.rotation = normal.angle() + (PI/2)
+	else:
+		sprite.rotation = (Vector2.RIGHT + velocity).normalized().angle()
 
 func _physics_process(delta : float) -> void:
 	_handle_gravity(delta)
@@ -56,6 +64,7 @@ func kill(killer : Node2D) -> void:
 	dead_flag = true
 	on_player_death.emit(killer)
 	health = 0
+	velocity = Vector2.ZERO
 	print("Player died!")
 
 	# Play player death anim here

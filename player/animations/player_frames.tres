@@ -1,0 +1,30 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://btr8w48gewnk"]
+
+[ext_resource type="Texture2D" uid="uid://ddhpehovln8n3" path="res://player/animations/run/run_anim0000.png" id="1_c5l6i"]
+[ext_resource type="Texture2D" uid="uid://qyiyg6x5jk7" path="res://player/animations/run/run_anim0001.png" id="2_stdxb"]
+[ext_resource type="Texture2D" uid="uid://beacblko1cicx" path="res://player/animations/run/run_anim0002.png" id="3_5vmjx"]
+[ext_resource type="Texture2D" uid="uid://o1xdjxddk7fj" path="res://player/animations/run/run_anim0003.png" id="4_2nsda"]
+[ext_resource type="Texture2D" uid="uid://vgui4juyx2sh" path="res://player/animations/run/run_anim0004.png" id="5_ew72f"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_c5l6i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_stdxb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5vmjx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_2nsda")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ew72f")
+}],
+"loop": true,
+"name": &"run",
+"speed": 20.0
+}]
