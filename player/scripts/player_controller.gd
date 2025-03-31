@@ -10,6 +10,9 @@ class_name Player extends CharacterBody2D
 @onready var default_gravity_amm : float = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var health := max_health
 @onready var sprite : AnimatedSprite2D = $sprite
+@onready var jump : AudioStreamPlayer = $jump
+@onready var death : AudioStreamPlayer = $death
+@onready var walk_vfx :GPUParticles2D = $walk_vfx
 
 signal on_player_death
 signal on_player_damage_taken
@@ -17,6 +20,8 @@ signal on_player_damage_taken
 var dead_flag : bool = false
 
 func _process(delta : float) -> void:
+	walk_vfx.emitting = is_on_floor()
+
 	var collision = move_and_collide(Vector2.RIGHT,true)
 	if collision:
 		var normal := collision.get_normal()
@@ -42,6 +47,7 @@ func _handle_jump() -> void:
 
 	if Input.is_action_pressed("jump"):
 		velocity.y = -_calculate_jump_velocity(jump_height)
+		jump.play()
 
 func _calculate_jump_velocity(target_height : float) -> float:
 	return sqrt(2*default_gravity_amm * target_height)
@@ -57,6 +63,7 @@ func respawn(new_pos : Vector2) -> void:
 	velocity = Vector2.ZERO
 	health = max_health
 	dead_flag = false
+	sprite.visible = true
 
 func kill(killer : Node2D) -> void:
 	if is_dead():
@@ -66,6 +73,8 @@ func kill(killer : Node2D) -> void:
 	health = 0
 	velocity = Vector2.ZERO
 	print("Player died!")
+	death.play()
+	sprite.visible = false
 
 func is_dead() -> bool:
 	return dead_flag

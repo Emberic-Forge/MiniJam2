@@ -1,6 +1,7 @@
 class_name MainMenuLayer extends CanvasLayer
 
 @export_file var game_scene : String
+@export_file var options_menu : String
 
 @onready var play : Button = $elements/play
 @onready var options : Button = $elements/options
@@ -17,7 +18,8 @@ func _on_game_start() -> void:
 
 
 func _on_options_enable() -> void:
-	pass
+	var ins = load(options_menu).instantiate()
+	add_child(ins)
 
 
 func _process(delta : float) -> void:

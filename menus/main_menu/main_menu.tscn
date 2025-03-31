@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cf4jkpdyxvahs"]
+[gd_scene load_steps=5 format=3 uid="uid://cf4jkpdyxvahs"]
 
 [ext_resource type="Script" uid="uid://d2nxs7eaf2tcq" path="res://menus/main_menu/scripts/main_menu.gd" id="1_xbn2l"]
+[ext_resource type="AudioStream" uid="uid://b4ivsd6p4qosj" path="res://music/assets/Low Pass Loop.wav" id="2_1nwmw"]
+[ext_resource type="Texture2D" uid="uid://cd0xo381m3opo" path="res://other/game_icon/icon.png" id="2_vu5tu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1nwmw"]
 font_size = 32
@@ -8,6 +10,124 @@ font_size = 32
 [node name="main_menu" type="CanvasLayer"]
 script = ExtResource("1_xbn2l")
 game_scene = "uid://i4rf6ylkd03b"
+options_menu = "uid://cvpht4d44c3si"
+
+[node name="background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="snake" type="Control" parent="."]
+modulate = Color(0.815686, 0.815686, 0.815686, 0.286275)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -298.0
+offset_top = -5.0
+offset_right = -258.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="snake"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
+offset_left = -3.0
+offset_top = -31.0
+offset_right = 97.0
+offset_bottom = 69.0
+
+[node name="ColorRect2" type="ColorRect" parent="snake"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
+offset_left = -112.0
+offset_top = -31.0
+offset_right = -12.0
+offset_bottom = 69.0
+
+[node name="ColorRect3" type="ColorRect" parent="snake"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
+offset_left = -224.0
+offset_top = -31.0
+offset_right = -124.0
+offset_bottom = 69.0
+
+[node name="ColorRect4" type="ColorRect" parent="snake"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
+offset_left = -333.0
+offset_top = -31.0
+offset_right = -233.0
+offset_bottom = 69.0
+
+[node name="snake2" type="Control" parent="."]
+modulate = Color(0.815686, 0.815686, 0.815686, 0.286275)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 553.0
+offset_top = -3.0
+offset_right = 593.0
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="snake2"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
+offset_left = -3.0
+offset_top = -31.0
+offset_right = 97.0
+offset_bottom = 69.0
+
+[node name="ColorRect2" type="ColorRect" parent="snake2"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
+offset_left = -112.0
+offset_top = -31.0
+offset_right = -12.0
+offset_bottom = 69.0
+
+[node name="ColorRect3" type="ColorRect" parent="snake2"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
+offset_left = -224.0
+offset_top = -31.0
+offset_right = -124.0
+offset_bottom = 69.0
+
+[node name="ColorRect4" type="ColorRect" parent="snake2"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 0
+offset_left = -333.0
+offset_top = -31.0
+offset_right = -233.0
+offset_bottom = 69.0
+
+[node name="icon" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.152941)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -120.0
+offset_right = 120.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_vu5tu")
 
 [node name="elements" type="VBoxContainer" parent="."]
 anchors_preset = 8
@@ -24,7 +144,7 @@ grow_vertical = 2
 
 [node name="title" type="Label" parent="elements"]
 layout_mode = 2
-text = "Reverse Snake"
+text = "Escape the Game"
 label_settings = SubResource("LabelSettings_1nwmw")
 horizontal_alignment = 1
 
@@ -39,3 +159,8 @@ text = "Play"
 [node name="options" type="Button" parent="elements"]
 layout_mode = 2
 text = "Options"
+
+[node name="background_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_1nwmw")
+autoplay = true
+bus = &"Music"

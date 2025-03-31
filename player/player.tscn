@@ -1,11 +1,45 @@
-[gd_scene load_steps=5 format=3 uid="uid://nt7cjwx734u7"]
+[gd_scene load_steps=13 format=3 uid="uid://nt7cjwx734u7"]
 
 [ext_resource type="Script" uid="uid://yssppt0n4aql" path="res://player/scripts/player_controller.gd" id="1_oul6g"]
 [ext_resource type="SpriteFrames" uid="uid://btr8w48gewnk" path="res://player/animations/player_frames.tres" id="2_g1dw6"]
 [ext_resource type="Script" uid="uid://bpilo4qmimq75" path="res://player/scripts/camera_tracker.gd" id="2_rkbax"]
+[ext_resource type="AudioStream" uid="uid://bthrk00wk84pw" path="res://player/sfx/assets/273567__n_audioman__jump16.wav" id="3_qjkh3"]
+[ext_resource type="AudioStream" uid="uid://bmh48l63ygb4u" path="res://player/sfx/assets/270328__littlerobotsoundfactory__hero_death_00.wav" id="4_g6k8r"]
+[ext_resource type="Texture2D" uid="uid://bwyg5vgnx7nou" path="res://player/vfx/walk_smoke.png" id="5_g6k8r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rkbax"]
 radius = 12.0
+
+[sub_resource type="Curve" id="Curve_g6k8r"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.488235, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_boad6"]
+curve = SubResource("Curve_g6k8r")
+
+[sub_resource type="Curve" id="Curve_rgyib"]
+_limits = [0.0, 3.0, 0.0, 1.0]
+_data = [Vector2(0.00588235, 0.997073), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_hg6s5"]
+curve = SubResource("Curve_rgyib")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_g6k8r"]
+lifetime_randomness = 0.19
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(-11.675, 9.6, 0)
+emission_shape = 1
+emission_sphere_radius = 1.0
+angular_velocity_min = -1.00002
+angular_velocity_max = 0.999984
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -2.23517e-06
+linear_accel_max = -2.23517e-06
+scale_min = 0.01
+scale_max = 0.05
+scale_over_velocity_curve = SubResource("CurveTexture_hg6s5")
+alpha_curve = SubResource("CurveTexture_boad6")
 
 [node name="player" type="Node2D"]
 
@@ -24,6 +58,21 @@ autoplay = "run"
 
 [node name="body" type="CollisionShape2D" parent="avatar"]
 shape = SubResource("CircleShape2D_rkbax")
+
+[node name="jump" type="AudioStreamPlayer" parent="avatar"]
+stream = ExtResource("3_qjkh3")
+bus = &"SFX"
+
+[node name="death" type="AudioStreamPlayer" parent="avatar"]
+stream = ExtResource("4_g6k8r")
+bus = &"SFX"
+
+[node name="walk_vfx" type="GPUParticles2D" parent="avatar"]
+amount = 25
+texture = ExtResource("5_g6k8r")
+explosiveness = 0.2
+randomness = 0.5
+process_material = SubResource("ParticleProcessMaterial_g6k8r")
 
 [node name="camera" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
